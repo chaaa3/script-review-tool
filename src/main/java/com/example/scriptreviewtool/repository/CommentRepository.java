@@ -15,4 +15,7 @@ public interface CommentRepository extends JpaRepository<Comment, Long> {
 
 	// Rechercher tous les commentaires d'un utilisateur spécifique
 	List<Comment> findByAuthor_Id(Long authorId);
+
+	// Rechercher tous les commentaires d'un script spécifique
+	List<Comment> findByScriptId(Long scriptId);
 }

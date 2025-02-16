@@ -1,11 +1,13 @@
 package com.example.scriptreviewtool.model;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.EnumType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -29,7 +31,7 @@ public class Script {
     @ManyToOne
     private User author;
 
-    @ManyToOne
+    @Enumerated(EnumType.STRING)
     private Status status;
 
     @ManyToMany
@@ -41,13 +43,13 @@ public class Script {
     @OneToMany(mappedBy = "script", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Revision> revisions = new ArrayList<>();
 
-    private Date createdAt = new Date();
+    private LocalDateTime createdAt = LocalDateTime.now();
 
     public Script() {
-        // Constructeur par défaut requis par JPA
+        
     }
 
-    public Script(Long id, String title, String content, User author, Status status, Date createdAt) {
+    public Script(Long id, String title, String content, User author, Status status, LocalDateTime createdAt) {
         this.id = id;
         this.title = title;
         this.content = content;
@@ -121,11 +123,11 @@ public class Script {
         this.revisions = revisions;
     }
 
-    public Date getCreatedAt() {
+    public LocalDateTime getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Date createdAt) {
+    public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
 

@@ -45,4 +45,9 @@ public class UserService {
 	public void deleteUser(Long id) {
 		userRepository.deleteById(id);
 	}
+
+	// Récupérer plusieurs utilisateurs par leurs IDs
+	public List<User> getUsersByIds(List<Long> ids) {
+		return userRepository.findAllById(ids);
+	}
 }

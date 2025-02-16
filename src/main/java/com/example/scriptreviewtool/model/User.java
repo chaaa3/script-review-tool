@@ -39,7 +39,7 @@ public class User {
     @OneToMany(mappedBy = "author", cascade = CascadeType.ALL)
     private List<Revision> revisions;
 
-    public User() {
+    public User() {		
     }
 
     public User(Long id, String username, String email, String password, Role role, List<Script> scripts,

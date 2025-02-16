@@ -23,25 +23,25 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 
-	// Récupérer tous les utilisateurs
+
 	@GetMapping
 	public ResponseEntity<List<User>> getAllUsers() {
 		return ResponseEntity.ok(userService.getAllUsers());
 	}
 
-	// Récupérer un utilisateur par ID
+	
 	@GetMapping("/{id}")
 	public ResponseEntity<User> getUserById(@PathVariable Long id) {
 		return userService.getUserById(id).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
 	}
 
-	// Créer un nouvel utilisateur
+	
 	@PostMapping
 	public ResponseEntity<User> createUser(@RequestBody User user) {
 		return ResponseEntity.status(201).body(userService.createUser(user));
 	}
 
-	// Mettre à jour un utilisateur existant
+	
 	@PutMapping("/{id}")
 	public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User updatedUser) {
 		try {
@@ -52,7 +52,7 @@ public class UserController {
 		}
 	}
 
-	// Supprimer un utilisateur
+	
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
 		userService.deleteUser(id);

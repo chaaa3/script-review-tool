@@ -1,6 +1,6 @@
 package com.example.scriptreviewtool.dto;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import com.example.scriptreviewtool.model.Status;
@@ -16,7 +16,7 @@ public class ScriptDTO {
 	private String authorUsername; // Nom d'utilisateur de l'auteur
 	private List<String> reviewerUsernames;
 	private com.example.scriptreviewtool.model.Status status; // Nom du statut
-	private Date createdAt;
+	private LocalDateTime createdAt;
 
 	// Constructeur pour mapper une entité Script vers un ScriptDTO
 	public ScriptDTO(com.example.scriptreviewtool.model.Script script) {

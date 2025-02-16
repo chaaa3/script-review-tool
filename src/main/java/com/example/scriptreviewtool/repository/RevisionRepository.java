@@ -1,18 +1,20 @@
 package com.example.scriptreviewtool.repository;
 
-import java.util.List;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.example.scriptreviewtool.model.Revision;
+import com.example.scriptreviewtool.model.User;
+
+import java.time.LocalDateTime;
+import java.util.List;
 
 @Repository
 public interface RevisionRepository extends JpaRepository<Revision, Long> {
-
-	// Rechercher toutes les révisions d'un script spécifique
-	List<Revision> findByScript_Id(Long scriptId);
-
-	// Rechercher toutes les révisions d'un utilisateur spécifique
-	List<Revision> findByAuthor_Id(Long authorId);
+    
+    List<Revision> findByScriptIdOrderByCreatedAtDesc(Long scriptId);
+    
+    List<Revision> findByAuthorIdOrderByCreatedAtDesc(Long authorId);
+    
+    long countByAuthorAndCreatedAtBetween(User author, LocalDateTime startDate, LocalDateTime endDate);
 }

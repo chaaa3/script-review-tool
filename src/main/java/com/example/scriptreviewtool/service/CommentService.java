@@ -25,6 +25,11 @@ public class CommentService {
 		return commentRepository.findById(id);
 	}
 
+	// Récupérer tous les commentaires d'un script
+	public List<Comment> getCommentsByScriptId(Long scriptId) {
+		return commentRepository.findByScriptId(scriptId);
+	}
+
 	// Créer un nouveau commentaire
 	public Comment createComment(Comment comment) {
 		return commentRepository.save(comment);

@@ -1,8 +1,10 @@
 package com.example.scriptreviewtool.model;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.EnumType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -24,18 +26,29 @@ public class Revision {
     @ManyToOne
     private Script script;
 
-    private Date createdAt = new Date();
+    private LocalDateTime createdAt = LocalDateTime.now();
+
+    @Enumerated(EnumType.STRING)
+    private Status oldStatus;
+
+    @Enumerated(EnumType.STRING)
+    private Status newStatus;
+
+    private String comment;
 
     public Revision() {
         // Constructeur par défaut requis par JPA
     }
 
-    public Revision(Long id, String changes, User author, Script script, Date createdAt) {
+    public Revision(Long id, String changes, User author, Script script,
+                   Status oldStatus, Status newStatus, String comment) {
         this.id = id;
         this.changes = changes;
         this.author = author;
         this.script = script;
-        this.createdAt = createdAt;
+        this.oldStatus = oldStatus;
+        this.newStatus = newStatus;
+        this.comment = comment;
     }
 
     // Getters and setters
@@ -71,12 +84,36 @@ public class Revision {
         this.script = script;
     }
 
-    public Date getCreatedAt() {
+    public LocalDateTime getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Date createdAt) {
+    public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public Status getOldStatus() {
+        return oldStatus;
+    }
+
+    public void setOldStatus(Status oldStatus) {
+        this.oldStatus = oldStatus;
+    }
+
+    public Status getNewStatus() {
+        return newStatus;
+    }
+
+    public void setNewStatus(Status newStatus) {
+        this.newStatus = newStatus;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 
     public void restoreVersion() {

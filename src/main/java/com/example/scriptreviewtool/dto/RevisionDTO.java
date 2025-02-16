@@ -1,6 +1,6 @@
 package com.example.scriptreviewtool.dto;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import lombok.Data;
 
@@ -10,7 +10,7 @@ public class RevisionDTO {
 	private Long id;
 	private String changes;
 	private String authorUsername; // Nom d'utilisateur de l'auteur
-	private Date createdAt;
+	private LocalDateTime createdAt;
 
 	// Constructeur pour mapper une entité Revision vers un RevisionDTO
 	public RevisionDTO(com.example.scriptreviewtool.model.Revision revision) {
