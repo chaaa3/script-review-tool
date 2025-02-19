@@ -34,4 +34,60 @@ public class ScriptDTO {
 		}
 		this.createdAt = script.getCreatedAt();
 	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	public String getAuthorUsername() {
+		return authorUsername;
+	}
+
+	public void setAuthorUsername(String authorUsername) {
+		this.authorUsername = authorUsername;
+	}
+
+	public List<String> getReviewerUsernames() {
+		return reviewerUsernames;
+	}
+
+	public void setReviewerUsernames(List<String> reviewerUsernames) {
+		this.reviewerUsernames = reviewerUsernames;
+	}
+
+	public com.example.scriptreviewtool.model.Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(com.example.scriptreviewtool.model.Status status) {
+		this.status = status;
+	}
+
+	public LocalDateTime getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(LocalDateTime createdAt) {
+		this.createdAt = createdAt;
+	}
 }

@@ -1,10 +1,11 @@
 package com.example.scriptreviewtool.service;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,7 +21,7 @@ import com.example.scriptreviewtool.repository.ScriptRepository;
 @Service
 @Transactional
 public class ScriptService {
-
+	private static final Logger logger = LoggerFactory.getLogger(ScriptService.class);
 	@Autowired
 	private ScriptRepository scriptRepository;
 
@@ -42,12 +43,14 @@ public class ScriptService {
 
 	// Créer un nouveau script
 	public Script createScript(Script script) {
+		logger.info("Creating script: {}", script.getTitle());
 		script.setCreatedAt(LocalDateTime.now());
 		return scriptRepository.save(script);
 	}
 
 	// Mettre à jour un script existant
 	public Script updateScript(Long id, Script updatedScript) {
+		logger.info("Updating script with ID: {}", id);
 		return scriptRepository.findById(id).map(script -> {
 			script.setTitle(updatedScript.getTitle());
 			script.setContent(updatedScript.getContent());

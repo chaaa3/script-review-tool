@@ -11,4 +11,12 @@ public class RoleDTO {
 	public RoleDTO(com.example.scriptreviewtool.model.Role role) {
 		this.name = role.getName();
 	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 }

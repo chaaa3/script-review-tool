@@ -11,9 +11,12 @@ import com.example.scriptreviewtool.model.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 
-	// Rechercher un utilisateur par email
-	Optional<User> findByEmail(String email);
+    // Rechercher un utilisateur par username
+    Optional<User> findByUsername(String username);
 
-	// Rechercher tous les utilisateurs ayant un rôle spécifique
-	List<User> findByRole_Name(String roleName);
+    // Rechercher un utilisateur par email
+    Optional<User> findByEmail(String email);
+
+    // Rechercher tous les utilisateurs ayant un rôle spécifique
+    List<User> findByRole_Name(String roleName);
 }

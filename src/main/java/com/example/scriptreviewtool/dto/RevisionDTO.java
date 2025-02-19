@@ -21,4 +21,36 @@ public class RevisionDTO {
 		}
 		this.createdAt = revision.getCreatedAt();
 	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getChanges() {
+		return changes;
+	}
+
+	public void setChanges(String changes) {
+		this.changes = changes;
+	}
+
+	public String getAuthorUsername() {
+		return authorUsername;
+	}
+
+	public void setAuthorUsername(String authorUsername) {
+		this.authorUsername = authorUsername;
+	}
+
+	public LocalDateTime getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(LocalDateTime createdAt) {
+		this.createdAt = createdAt;
+	}
 }
